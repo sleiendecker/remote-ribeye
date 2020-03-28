@@ -1,3 +1,4 @@
 /.vscode
 /mqtt_creds.json
 /env
+/__pycache__/*
