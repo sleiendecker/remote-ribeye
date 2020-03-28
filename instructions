@@ -1,0 +1,35 @@
+Prereqs:
+  Raspberry Pi with WiFi
+  Bluetooth adapter
+  Anova Bluetooth model
+
+1. Download and install Raspbian Buster (desktop not needed) on your micro SD card- https://www.raspberrypi.org/downloads/raspbian/
+  1a. If you don't have a keyboard for the Pi, install Etcher so SSH is enabled by default- https://www.balena.io/etcher/
+2. Plug in the SD card and turn on the Pi
+3. Conigure your WiFi https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md
+4. Restart the Pi
+5. Run the following commands:
+  sudo apt-get update
+  sudo apt-get install python-pip
+  sudo apt-get install libglib2.0-dev
+  sudo pip install bluepy
+  sudo pip install pycirculate --pre
+6. Clone this repo
+  git clone https://github.com/sleiendecker/remote-ribeye
+7. Plug in your Anova and run 
+  sudo hcitool lescan
+8. Copy the MAC address of the anova and paste it in the .env file:
+  ANOVA_MAC_ADDRESS=<copied mac address>
+9. Configure port forwarding on your router so a specified port points to port 80 (be careful. I'm not responsible if you get hacked)
+10. The morning of your steak night, fill the sous vide pot with water + ice, drop the vacuum sealed steak in the bath, and turn on the Anova
+11. Start the app on the raspberry pi
+  npm run cook
+12. Go to work and do your thing
+13. When you're 2-3 hours from dinner time, navigate to https://<your_ip>:<specific_port>
+14. Enter the values for your cook, then click "Start"
+15. Drive/bike/scooter home and remove the steak from the pot if it's ready, then place in an ice bath for a few minutes
+16. Open the bag, pat dry, coat both sides with salt, pepper, and garlic powder (optional)
+17. Heat up a cast iron skillet until it reaches ~450F, add ghee and/or avocado oil
+18. Carefully place the steak on the skill for 90 seconds on each side
+19. Remove steak from the cast iron, add butter and truffle salt, then let rest for a few minutes
+20. Dig in
